@@ -1,0 +1,49 @@
+package com.test.demo.primary.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity(name = "Space")
+@Table(name="spaces")
+public class Space {
+    @Id
+    private Long  id;
+    private String name;
+    private String guid;  
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name="organization_id")
+    private Organization organization;
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public Organization getOrganization() {
+        return organization;
+    }
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
+    }
+    public String getGuid() {
+        return guid;
+    }
+    public void setGuid(String guid) {
+        this.guid = guid;
+    }
+    @Override
+    public String toString() {
+        return "Space [id=" + id + ", name=" + name + ", guid=" + guid + ", organization="
+               + organization + "]";
+    }
+}
